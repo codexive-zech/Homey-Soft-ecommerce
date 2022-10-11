@@ -50,7 +50,7 @@ const SingleProductPage = () => {
     description,
     color,
     id: sku,
-    image,
+    images,
     name,
     price,
     review,
@@ -65,7 +65,7 @@ const SingleProductPage = () => {
           Back To Products
         </Link>
         <div className="product-center">
-          <ProductImages />
+          <ProductImages images={images} />
           <div className="content">
             <h2>{name}</h2>
             <Stars />
