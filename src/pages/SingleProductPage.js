@@ -85,7 +85,7 @@ const SingleProductPage = () => {
             </p>
             <hr />
             {/* Add color later */}
-            {stock > 0 ? <AddToCart /> : null}
+            {stock > 0 ? <AddToCart singleProduct={singleProduct} /> : null}
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ const Stars = ({ stars, reviews }) => {
   const tempStars = Array.from({ length: 5 }, (_, index) => {
     const getHalfNumb = index + 0.5;
     return (
-      <span>
+      <span key={index}>
         {stars >= index + 1 ? (
           <BsStarFill />
         ) : stars >= getHalfNumb ? (
