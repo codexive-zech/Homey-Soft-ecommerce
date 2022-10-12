@@ -14,7 +14,7 @@ const filter_reducer = (state, action) => {
     return {
       ...state,
       allProducts: [...action.payload],
-      filteredProducts: [...action.payload],
+      allFilteredProducts: [...action.payload], // copying value and not referring to same place in the memory
     };
   }
   throw new Error(`No Matching "${action.type}" - action type`);

@@ -6,8 +6,8 @@ const PageHero = ({ title, singleProduct }) => {
     <Wrapper>
       <div className="section-center">
         <h3>
-          <Link to="/">Home</Link>/
-          {singleProduct ? <Link to="/products">Products</Link> : null}/{title}
+          <Link to="/">Home</Link>
+          {singleProduct ? <Link to="/products">/Products</Link> : null}/{title}
         </h3>
       </div>
     </Wrapper>
