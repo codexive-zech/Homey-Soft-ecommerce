@@ -18,6 +18,16 @@ const initialState = {
   gridView: true,
   allFilteredProductsLoading: true,
   productSort: "price-lowest",
+  filters: {
+    text: "",
+    category: "all",
+    company: "all",
+    colors: "all",
+    minPrice: 0,
+    maxPrice: 0,
+    price: 0,
+    shipping: false,
+  },
 };
 
 const FilterContext = React.createContext();
