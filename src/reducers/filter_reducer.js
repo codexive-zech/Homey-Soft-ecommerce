@@ -17,6 +17,12 @@ const filter_reducer = (state, action) => {
       allFilteredProducts: [...action.payload], // copying value and not referring to same place in the memory
     };
   }
+  if (action.type === SET_GRIDVIEW) {
+    return { ...state, gridView: true };
+  }
+  if (action.type === SET_LISTVIEW) {
+    return { ...state, gridView: false };
+  }
   throw new Error(`No Matching "${action.type}" - action type`);
 };
 

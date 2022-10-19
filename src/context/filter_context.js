@@ -15,7 +15,7 @@ import { useProductsContext } from "./products_context";
 const initialState = {
   allProducts: [],
   allFilteredProducts: [],
-  gridView: false,
+  gridView: true,
   allFilteredProductsLoading: true,
 };
 
@@ -25,11 +25,19 @@ export const FilterProvider = ({ children }) => {
   const { products } = useProductsContext();
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const gridProducts = () => {
+    dispatch({ type: SET_GRIDVIEW });
+  };
+
+  const listProducts = () => {
+    dispatch({ type: SET_LISTVIEW });
+  };
+
   useEffect(() => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
   }, [products]);
   return (
-    <FilterContext.Provider value={{ ...state }}>
+    <FilterContext.Provider value={{ ...state, gridProducts, listProducts }}>
       {children}
     </FilterContext.Provider>
   );
