@@ -20,8 +20,8 @@ const initialState = {
   productSort: "price-lowest",
   filters: {
     text: "",
-    category: "all",
-    company: "all",
+    categories: "all",
+    companies: "all",
     colors: "all",
     minPrice: 0,
     maxPrice: 0,
@@ -51,17 +51,33 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: UPDATE_SORT, payload: sortValue });
   };
 
+  const updateFilters = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
+  };
+
+  const clearFilters = () => {};
+
   useEffect(() => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
   }, [products]);
 
   useEffect(() => {
+    dispatch({ type: FILTER_PRODUCTS });
     dispatch({ type: SORT_PRODUCTS });
-  }, [products, state.productSort]);
+  }, [products, state.productSort, state.filters]);
 
   return (
     <FilterContext.Provider
-      value={{ ...state, gridProducts, listProducts, updateSort }}
+      value={{
+        ...state,
+        gridProducts,
+        listProducts,
+        updateSort,
+        updateFilters,
+        clearFilters,
+      }}
     >
       {children}
     </FilterContext.Provider>
