@@ -25,8 +25,6 @@ const Filters = () => {
   const allCompanies = getUniqueValues(allProducts, "company");
   const allColors = getUniqueValues(allProducts, "colors");
 
-  console.log(allColors);
-
   return (
     <Wrapper>
       <div className="content">
@@ -43,6 +41,26 @@ const Filters = () => {
             />
           </div>
           {/* End of Search Text */}
+          {/* Product Category */}
+          <div className="form-control">
+            <h5>Categories</h5>
+            {allCategories.map((category, index) => {
+              return (
+                <button
+                  type="button"
+                  key={index}
+                  name="categories"
+                  onClick={updateFilters}
+                  className={
+                    categories === category.toLowerCase() ? "active" : null
+                  }
+                >
+                  {category}
+                </button>
+              );
+            })}
+          </div>
+          {/* Product Category */}
         </form>
       </div>
     </Wrapper>

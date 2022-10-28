@@ -45,15 +45,17 @@ export const FilterProvider = ({ children }) => {
   };
 
   const updateSort = (e) => {
-    const name = e.target.name;
+    // const name = e.target.name;
     const sortValue = e.target.value;
-    console.log(name, sortValue);
     dispatch({ type: UPDATE_SORT, payload: sortValue });
   };
 
   const updateFilters = (e) => {
     let name = e.target.name;
     let value = e.target.value;
+    if (name === "categories") {
+      value = e.target.textContent;
+    }
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
 
