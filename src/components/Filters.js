@@ -119,6 +119,20 @@ const Filters = () => {
             </div>
           </div>
           {/* End of Color */}
+          {/* Price */}
+          <div className="form-control">
+            <h5>Price</h5>
+            <p className="price">{formatPrice(price)}</p>
+            <input
+              type="range"
+              name="price"
+              min={minPrice}
+              max={maxPrice}
+              value={price}
+              onChange={updateFilters}
+            />
+          </div>
+          {/* End of Price */}
         </form>
       </div>
     </Wrapper>
