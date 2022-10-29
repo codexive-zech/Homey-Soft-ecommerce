@@ -61,6 +61,64 @@ const Filters = () => {
             })}
           </div>
           {/* Product Category */}
+          {/* Company */}
+          <div className="form-control">
+            <h5>Company</h5>
+            <select
+              name="companies"
+              className="company"
+              value={companies}
+              onChange={updateFilters}
+            >
+              {allCompanies.map((company, index) => {
+                return (
+                  <option value={company} key={index}>
+                    {company}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          {/* Company */}
+          {/* Color */}
+          <div className="form-control">
+            <h5>Colors</h5>
+            <div className="colors">
+              {allColors.map((color, index) => {
+                if (color === "all") {
+                  return (
+                    <button
+                      name="colors"
+                      onClick={updateFilters}
+                      data-colors="ll"
+                      className={`${
+                        colors === "all" ? "all-btn active" : "all-btn"
+                      }`}
+                    >
+                      all
+                    </button>
+                  );
+                }
+
+                return (
+                  <button
+                    type="button"
+                    key={index}
+                    name="colors"
+                    style={{ background: color }}
+                    className={
+                      colors === color ? "color-btn active" : "color-btn"
+                    }
+                    data-colors={color}
+                    onClick={updateFilters}
+                  >
+                    {colors === color ? <FaCheck /> : null}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          {/* End of Color */}
         </form>
       </div>
     </Wrapper>
