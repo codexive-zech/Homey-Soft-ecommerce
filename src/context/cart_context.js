@@ -12,15 +12,21 @@ const initialState = {
   cart: [],
   totalItem: 0,
   totalAmount: 0,
-  shipping: 534,
+  shippingFee: 534,
 };
 
 const CartContext = React.createContext();
 
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const addToCart = (id, color, amount, product) => {
+    dispatch({ type: ADD_TO_CART, payload: { id, color, amount, product } });
+  }; // using the approach because it must not exceed the stock
   return (
-    <CartContext.Provider value={{ ...state }}>{children}</CartContext.Provider>
+    <CartContext.Provider value={{ ...state, addToCart }}>
+      {children}
+    </CartContext.Provider>
   );
 };
 // make sure use
