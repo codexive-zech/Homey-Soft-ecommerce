@@ -90,7 +90,7 @@ const Filters = () => {
                     <button
                       name="colors"
                       onClick={updateFilters}
-                      data-colors="ll"
+                      data-colors="all"
                       className={`${
                         colors === "all" ? "all-btn active" : "all-btn"
                       }`}
