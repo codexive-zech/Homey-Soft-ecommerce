@@ -37,7 +37,9 @@ export const CartProvider = ({ children }) => {
   const removeCartItem = (id) => {
     dispatch({ type: REMOVE_CART_ITEM, payload: { id } });
   };
-  const toggleAmount = () => {};
+  const toggleAmount = (id, value) => {
+    dispatch({ type: TOGGLE_CART_ITEM_AMOUNT, payload: { id, value } });
+  };
 
   useEffect(() => {
     localStorage.setItem("e-cart", JSON.stringify(state.cart));
