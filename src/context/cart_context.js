@@ -14,8 +14,8 @@ const getCartItems = () => {
 };
 const initialState = {
   cart: getCartItems(),
-  totalItem: 0,
-  totalAmount: 0,
+  totalItems: 0,
+  totalAmounts: 0,
   shippingFee: 534,
 };
 
@@ -43,6 +43,7 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("e-cart", JSON.stringify(state.cart));
+    dispatch({ type: COUNT_CART_TOTALS });
   }, [state.cart]);
   return (
     <CartContext.Provider

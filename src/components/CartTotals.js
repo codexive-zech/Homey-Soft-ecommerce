@@ -6,20 +6,20 @@ import { formatPrice } from "../utils/helpers";
 import { Link } from "react-router-dom";
 
 const CartTotals = () => {
-  const { totalAmount, shippingFee } = useCartContext();
+  const { totalAmounts, shippingFee } = useCartContext();
   return (
     <Wrapper>
       <div>
         <article>
           <h5>
-            Subtotal : <span>{formatPrice(totalAmount)}</span>
+            Subtotal : <span>{formatPrice(totalAmounts)}</span>
           </h5>
           <p>
             Shipping Fee : <span>{formatPrice(shippingFee)}</span>
           </p>
           <hr />
           <h4>
-            Total Order : <span>{formatPrice(totalAmount + shippingFee)}</span>
+            Total Order : <span>{formatPrice(totalAmounts + shippingFee)}</span>
           </h4>
         </article>
         <Link to="/checkout" className="btn">
