@@ -31,8 +31,12 @@ export const CartProvider = ({ children }) => {
     });
   }; // using the approach because it must not exceed the stock
 
-  const clearCart = () => {};
-  const removeCartItem = (id) => {};
+  const clearCart = () => {
+    dispatch({ type: CLEAR_CART });
+  };
+  const removeCartItem = (id) => {
+    dispatch({ type: REMOVE_CART_ITEM, payload: { id } });
+  };
   const toggleAmount = () => {};
 
   useEffect(() => {
