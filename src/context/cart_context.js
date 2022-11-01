@@ -8,8 +8,12 @@ import {
   COUNT_CART_TOTALS,
 } from "../actions";
 
+const getCartItems = () => {
+  const result = localStorage.getItem("e-cart");
+  return result ? JSON.parse(result) : [];
+};
 const initialState = {
-  cart: [],
+  cart: getCartItems(),
   totalItem: 0,
   totalAmount: 0,
   shippingFee: 534,
@@ -26,6 +30,10 @@ export const CartProvider = ({ children }) => {
       payload: { id, color, amount, singleProduct },
     });
   }; // using the approach because it must not exceed the stock
+
+  useEffect(() => {
+    localStorage.setItem("e-cart", JSON.stringify(state.cart));
+  }, [state.cart]);
   return (
     <CartContext.Provider value={{ ...state, addToCart }}>
       {children}
