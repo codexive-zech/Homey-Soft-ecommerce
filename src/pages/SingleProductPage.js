@@ -45,10 +45,8 @@ const SingleProductPage = () => {
   }
 
   const {
-    category,
     company,
     description,
-    color,
     id: sku,
     images,
     name,
