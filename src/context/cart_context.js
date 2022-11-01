@@ -32,12 +32,16 @@ export const CartProvider = ({ children }) => {
   }; // using the approach because it must not exceed the stock
 
   const clearCart = () => {};
+  const removeCartItem = (id) => {};
+  const toggleAmount = () => {};
 
   useEffect(() => {
     localStorage.setItem("e-cart", JSON.stringify(state.cart));
   }, [state.cart]);
   return (
-    <CartContext.Provider value={{ ...state, addToCart, clearCart }}>
+    <CartContext.Provider
+      value={{ ...state, addToCart, clearCart, removeCartItem, toggleAmount }}
+    >
       {children}
     </CartContext.Provider>
   );
