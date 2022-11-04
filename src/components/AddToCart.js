@@ -115,3 +115,5 @@ const Wrapper = styled.section`
   }
 `;
 export default AddToCart;
+
+// recovery Code for Auth0 : V32WGLY1236ZY3LXGA1RC8GF
