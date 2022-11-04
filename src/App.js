@@ -27,9 +27,9 @@ function App() {
         <Route exact path="/cart">
           <Cart />
         </Route>
-        <Route exact path="/checkout">
+        <PrivateRoute exact path="/checkout">
           <Checkout />
-        </Route>
+        </PrivateRoute>
         <Route exact path="/products">
           <Products />
         </Route>
