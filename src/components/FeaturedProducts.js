@@ -26,6 +26,7 @@ const FeaturedProducts = () => {
         {featuredProducts?.slice(0, 3).map((featured) => {
           return <Product key={featured.id} {...featured} />;
         })}
+        <Link to="/products">See All Products</Link>
       </div>
     </Wrapper>
   );
