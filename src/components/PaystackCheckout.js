@@ -1,17 +1,83 @@
 import React from "react";
 import styled from "styled-components";
+import { useCheckoutContext } from "../context/checkout_context";
+import { useAuth0 } from "@auth0/auth0-react";
+import PaystackPop from "@paystack/inline-js";
 import { useCartContext } from "../context/cart_context";
-import { useUserContext } from "../context/user_context";
 
 const CheckoutForm = () => {
+  const { user } = useAuth0();
+  const { name, email, phone, address, handleCheckoutInput } =
+    useCheckoutContext();
+  const { totalAmounts } = useCartContext();
+
+  const handlePayment = (e) => {
+    e.preventDefault();
+    const paystack = new PaystackPop();
+    paystack.newTransaction({
+      key: "pk_test_bbf8a22d3fbb78b217cd7f8ace2d4bb455feed57",
+      name,
+      amount: totalAmounts,
+      email,
+      phone,
+      address,
+      onSuccess(transaction) {
+        const message = `Payment Complete!. Reference is ${transaction.reference}`;
+        alert(message);
+      },
+      onCancel() {
+        alert("You Have Cancel The Transaction");
+      },
+    });
+  };
+
   return (
-    // <form>
-    //   <div>
-    //     <label htmlFor="name">Name</label>
-    //     <input type="text" id="name" />
-    //   </div>
-    // </form>
-    <></>
+    <form>
+      <h5>Fill Details To Make Payment</h5>
+      <div>
+        <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={user.name || name}
+          onChange={handleCheckoutInput}
+        />
+      </div>
+      <div>
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={email}
+          onChange={handleCheckoutInput}
+        />
+      </div>
+      <div>
+        <label htmlFor="phone">Phone Number</label>
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+          value={phone}
+          onChange={handleCheckoutInput}
+        />
+      </div>
+      <div>
+        <label htmlFor="address">House Address</label>
+        <input
+          type="text"
+          id="address"
+          name="address"
+          value={address}
+          onChange={handleCheckoutInput}
+        />
+      </div>
+      <button type="button" className="btn" onClick={handlePayment}>
+        Make Payment
+      </button>
+    </form>
   );
 };
 
@@ -32,6 +98,7 @@ const Wrapper = styled.section`
       0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
     border-radius: 7px;
     padding: 40px;
+    margin: 3rem;
   }
   input {
     border-radius: 6px;
@@ -59,6 +126,7 @@ const Wrapper = styled.section`
     transition: all 0.2s ease;
     box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
     width: 100%;
+    margin-top: 1rem;
   }
   button:hover {
     filter: contrast(115%);
