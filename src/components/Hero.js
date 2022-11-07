@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import heroBcg from "../assets/hero-bcg.jpeg";
-import heroBcg2 from "../assets/hero-bcg-2.jpeg";
+import heroBcg from "../assets/hero-1.jpg";
+import heroBcg2 from "../assets/hero-bcg-2.jpg";
 
 const Hero = () => {
   return (
@@ -12,8 +12,8 @@ const Hero = () => {
           Design Your <br /> Comfort Zone
         </h1>
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore,
-          quasi omnis! Consequatur laudantium officia vitae?
+          The Perfect Place for every furniture, crafted by hand and made from
+          sustainable wooden materials.
         </p>
         <Link to="/products" className="btn hero-btn">
           Shop Now
