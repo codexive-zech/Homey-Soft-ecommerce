@@ -43,19 +43,20 @@ const CartItem = ({ id, name, image, color, price, amount }) => {
 };
 
 const Wrapper = styled.article`
+  /* overflow: hidden; */
+  display: grid;
+  grid-template-columns: 200px auto auto;
+  grid-template-rows: 75px;
+  justify-items: center;
+  margin-bottom: 3rem;
+  align-items: center;
   .subtotal {
     display: none;
   }
   .price {
     display: none;
   }
-  display: grid;
-  grid-template-columns: 200px auto auto;
-  grid-template-rows: 75px;
-  gap: 3rem 1rem;
-  justify-items: center;
-  margin-bottom: 3rem;
-  align-items: center;
+
   .title {
     grid-template-rows: 75px;
     display: grid;

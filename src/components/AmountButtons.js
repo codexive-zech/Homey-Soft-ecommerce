@@ -18,8 +18,8 @@ const AmountButtons = ({ amount, decreaseAmount, increaseAmount }) => {
 
 const Wrapper = styled.div`
   display: grid;
-  width: 140px;
-  justify-items: center;
+  width: 70px;
+  justify-items: start;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   h2 {
