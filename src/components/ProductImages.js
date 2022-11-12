@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const ProductImages = ({ images = [{ url: "" }] }) => {
-  const [mainImage, setMainImage] = useState(images[0]);
+  const [mainImage, setMainImage] = useState(images[0]); // define the state of the image
   return (
     <Wrapper>
       <img src={mainImage.url} alt="main" className="main" />

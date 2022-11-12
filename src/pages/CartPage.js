@@ -17,7 +17,7 @@ const CartPage = () => {
         </div>
       </Wrapper>
     );
-  }
+  } // display when the cart item length is less than one
   return (
     <Wrapper className="page">
       <PageHero title="cart" />

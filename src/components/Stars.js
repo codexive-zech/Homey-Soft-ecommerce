@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 const Stars = ({ stars, reviews }) => {
+  // create an array from an array
   const tempStars = Array.from({ length: 5 }, (_, index) => {
     const getHalfNumb = index + 0.5;
     return (

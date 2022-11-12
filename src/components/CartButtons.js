@@ -7,9 +7,9 @@ import { useCartContext } from "../context/cart_context";
 import { useUserContext } from "../context/user_context";
 
 const CartButtons = () => {
-  const { closeSidebar } = useProductsContext();
-  const { totalItems } = useCartContext();
-  const { loginWithRedirect, logout, myUser } = useUserContext();
+  const { closeSidebar } = useProductsContext(); // passing in states and functionality
+  const { totalItems } = useCartContext(); // passing in states and functionality
+  const { loginWithRedirect, logout, myUser } = useUserContext(); // passing in states and functionality from Auth0
   return (
     <Wrapper className="cart-btn-wrapper">
       <Link to="/cart" className="cart-btn" onClick={closeSidebar}>
@@ -19,6 +19,7 @@ const CartButtons = () => {
           <span className="cart-value">{totalItems}</span>
         </span>
       </Link>
+      {/* checking the myUser state to see if a user exist display logout else display login */}
       {myUser ? (
         <button
           type="button"

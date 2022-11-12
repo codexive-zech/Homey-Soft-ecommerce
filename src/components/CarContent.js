@@ -7,10 +7,11 @@ import CartItem from "./CartItem";
 import CartTotals from "./CartTotals";
 
 const CartContent = () => {
-  const { cart, clearCart } = useCartContext();
+  const { cart, clearCart } = useCartContext(); // passing in states and functionality
   return (
     <Wrapper className="section section-center">
       <CartColumns />
+      {/* iterate over cart state  */}
       {cart.map((item) => {
         return <CartItem key={item.id} {...item} />;
       })}

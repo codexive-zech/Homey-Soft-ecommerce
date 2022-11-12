@@ -9,8 +9,8 @@ import { useProductsContext } from "../context/products_context";
 import { useUserContext } from "../context/user_context";
 
 const Nav = () => {
-  const { openSidebar } = useProductsContext();
-  const { myUser } = useUserContext();
+  const { openSidebar } = useProductsContext(); // passing in states and functionality
+  const { myUser } = useUserContext(); // passing in states and functionality
 
   return (
     <NavContainer>
@@ -24,6 +24,7 @@ const Nav = () => {
           </button>
         </div>
         <ul className="nav-links">
+          {/* iterating over all the links */}
           {links.map((link) => {
             const { id, url, text } = link;
             return (
@@ -32,6 +33,7 @@ const Nav = () => {
               </li>
             );
           })}
+          {/* checking to see if the myUser state exist display checkout else display nothing */}
           {myUser ? (
             <li>
               <Link to="checkout">Checkout</Link>

@@ -19,7 +19,7 @@ const Filters = () => {
     updateFilters,
     clearFilters,
     allProducts,
-  } = useFilterContext();
+  } = useFilterContext(); // passing in states and functionality
 
   const allCategories = getUniqueValues(allProducts, "category");
   const allCompanies = getUniqueValues(allProducts, "company");
@@ -44,6 +44,7 @@ const Filters = () => {
           {/* Product Category */}
           <div className="form-control">
             <h5>Categories</h5>
+            {/* iterate over all the categories */}
             {allCategories.map((category, index) => {
               return (
                 <button
@@ -70,6 +71,7 @@ const Filters = () => {
               value={companies}
               onChange={updateFilters}
             >
+              {/* iterate over all the companies */}
               {allCompanies.map((company, index) => {
                 return (
                   <option value={company} key={index}>
@@ -84,7 +86,9 @@ const Filters = () => {
           <div className="form-control">
             <h5>Colors</h5>
             <div className="colors">
+              {/* iterate over all the colors */}
               {allColors.map((color, index) => {
+                // display if btn is all
                 if (color === "all") {
                   return (
                     <button
@@ -99,7 +103,7 @@ const Filters = () => {
                     </button>
                   );
                 }
-
+// display the rest color in the color array 
                 return (
                   <button
                     type="button"

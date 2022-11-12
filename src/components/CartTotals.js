@@ -6,8 +6,8 @@ import { formatPrice } from "../utils/helpers";
 import { Link } from "react-router-dom";
 
 const CartTotals = () => {
-  const { totalAmounts, shippingFee } = useCartContext();
-  const { myUser, loginWithRedirect } = useUserContext();
+  const { totalAmounts, shippingFee } = useCartContext(); // passing in states and functionality
+  const { myUser, loginWithRedirect } = useUserContext(); // passing in states and functionality
   return (
     <Wrapper>
       <div>
@@ -23,6 +23,7 @@ const CartTotals = () => {
             Total Order : <span>{formatPrice(totalAmounts + shippingFee)}</span>
           </h4>
         </article>
+        {/* checking if the myUser state exist display checkout page else display login */}
         {myUser ? (
           <Link to="/checkout" className="btn">
             Proceed To Checkout

@@ -28,13 +28,13 @@ const initialState = {
     price: 0,
     shipping: false,
   },
-};
+}; // initialing all the state
 
-const FilterContext = React.createContext();
+const FilterContext = React.createContext(); //creating context api
 
 export const FilterProvider = ({ children }) => {
   const { products } = useProductsContext();
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState); // init the useReducer hook for use
 
   const gridProducts = () => {
     dispatch({ type: SET_GRIDVIEW });
@@ -48,7 +48,7 @@ export const FilterProvider = ({ children }) => {
     // const name = e.target.name;
     const sortValue = e.target.value;
     dispatch({ type: UPDATE_SORT, payload: sortValue });
-  };
+  }; // functionality for sorting of products
 
   const updateFilters = (e) => {
     let name = e.target.name;
@@ -66,11 +66,11 @@ export const FilterProvider = ({ children }) => {
       value = e.target.checked;
     }
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
-  };
+  }; // functionality for sorting of products
 
   const clearFilters = () => {
     dispatch({ type: CLEAR_FILTERS });
-  };
+  }; // functionality for handling and updating of all filters for product display
 
   useEffect(() => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
@@ -79,7 +79,7 @@ export const FilterProvider = ({ children }) => {
   useEffect(() => {
     dispatch({ type: FILTER_PRODUCTS });
     dispatch({ type: SORT_PRODUCTS });
-  }, [products, state.productSort, state.filters]);
+  }, [products, state.productSort, state.filters]); // re-render the filter products and sorted product when the product, sort and filter state changes
 
   return (
     <FilterContext.Provider
@@ -91,6 +91,7 @@ export const FilterProvider = ({ children }) => {
         updateFilters,
         clearFilters,
       }}
+      // returning states and function props to be used in components
     >
       {children}
     </FilterContext.Provider>

@@ -7,6 +7,7 @@ const PageHero = ({ title, singleProduct }) => {
       <div className="section-center">
         <h3>
           <Link to="/">Home</Link>
+          {/* checking if the single product obj is true */}
           {singleProduct ? <Link to="/products">/Products</Link> : null}/{title}
         </h3>
       </div>

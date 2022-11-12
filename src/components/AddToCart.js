@@ -6,27 +6,29 @@ import { useCartContext } from "../context/cart_context";
 import AmountButtons from "./AmountButtons";
 
 const AddToCart = ({ singleProduct }) => {
-  const { id, stock, colors } = singleProduct;
-  const { addToCart } = useCartContext();
-  const [mainColor, setMainColor] = useState(colors[0]);
-  const [amount, setAmount] = useState(1);
+  const { id, stock, colors } = singleProduct; // destructing single product property
+  const { addToCart } = useCartContext(); // passing in states and functionality
+  const [mainColor, setMainColor] = useState(colors[0]); // define color state for single product
+  const [amount, setAmount] = useState(1); // define amount state
 
   const increaseAmount = () => {
     setAmount((oldAmount) => {
-      let tempAmount = oldAmount + 1;
+      let tempAmount = oldAmount + 1; // increment amount
+      // checking if the amount is bigger than the available stock
       if (tempAmount > stock) {
-        tempAmount = stock;
-      }
+        tempAmount = stock; //
+      } // amount should be available stock
       return tempAmount;
     });
   };
 
   const decreaseAmount = () => {
     setAmount((oldAmount) => {
-      let tempAmount = oldAmount - 1;
+      let tempAmount = oldAmount - 1; // decrement amount
+      // checking if the amount is less than the one
       if (tempAmount < 1) {
         tempAmount = 1;
-      }
+      } // amount should be one
       return tempAmount;
     });
   };
@@ -35,6 +37,7 @@ const AddToCart = ({ singleProduct }) => {
       <div className="colors">
         <span>Color : </span>
         <div>
+          {/* iterate over the color state from the fetched API url */}
           {colors.map((color, index) => {
             return (
               <button
@@ -45,6 +48,7 @@ const AddToCart = ({ singleProduct }) => {
                 }`}
                 onClick={() => setMainColor(color)}
               >
+                {/* checking if the mainColor state is same as fetched color  */}
                 {mainColor === color ? <FaCheck /> : null}
               </button>
             );

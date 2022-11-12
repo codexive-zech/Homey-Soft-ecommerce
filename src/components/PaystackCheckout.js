@@ -1,19 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import { useCheckoutContext } from "../context/checkout_context";
-import { useAuth0 } from "@auth0/auth0-react";
 import PaystackPop from "@paystack/inline-js";
 import { useCartContext } from "../context/cart_context";
 
 const CheckoutForm = () => {
-  const { user } = useAuth0();
   const { name, email, phone, address, handleCheckoutInput } =
-    useCheckoutContext();
-  const { totalAmounts } = useCartContext();
+    useCheckoutContext(); // passing in states and functionality
+  const { totalAmounts } = useCartContext(); // passing in states and functionality
 
   const handlePayment = (e) => {
     e.preventDefault();
-    const paystack = new PaystackPop();
+    const paystack = new PaystackPop(); // create a new instance for paystack popup UI
     paystack.newTransaction({
       key: "pk_test_bbf8a22d3fbb78b217cd7f8ace2d4bb455feed57",
       name,
@@ -40,7 +38,7 @@ const CheckoutForm = () => {
           type="text"
           id="name"
           name="name"
-          value={user.name || name}
+          value={name}
           onChange={handleCheckoutInput}
         />
       </div>

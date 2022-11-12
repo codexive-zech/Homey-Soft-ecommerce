@@ -10,7 +10,7 @@ const Sort = () => {
     gridProducts,
     productSort,
     updateSort,
-  } = useFilterContext();
+  } = useFilterContext(); // passing in states and functionality
   return (
     <Wrapper>
       <div className="btn-container">

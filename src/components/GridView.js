@@ -6,6 +6,7 @@ const GridView = ({ allFilteredProducts }) => {
   return (
     <Wrapper>
       <div className="products-container">
+        {/* iterating over all the filtered products array */}
         {allFilteredProducts.map((products) => {
           return <Product key={products.id} {...products} />;
         })}

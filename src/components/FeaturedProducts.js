@@ -11,11 +11,11 @@ const FeaturedProducts = () => {
     useProductsContext();
   if (productLoading) {
     return <Loading />;
-  }
+  } // display loading component when data is still fetching
 
   if (productError) {
     return <Error />;
-  }
+  } // display error component when data is not found
   return (
     <Wrapper className="section">
       <div className="title">
@@ -23,7 +23,8 @@ const FeaturedProducts = () => {
         <div className="underline"></div>
       </div>
       <div className="section-center featured">
-        {featuredProducts?.slice(0, 3).map((featured) => {
+        {/* iterate over the featured products state and display all 6 product */}
+        {featuredProducts?.slice(0, 6).map((featured) => {
           return <Product key={featured.id} {...featured} />;
         })}
       </div>

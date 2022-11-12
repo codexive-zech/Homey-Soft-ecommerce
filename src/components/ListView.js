@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 const ListView = ({ allFilteredProducts }) => {
   return (
     <Wrapper>
+      {/* iterate over all the filtered products */}
       {allFilteredProducts.map((product) => {
+        // destructing property needed from product
         const { id, name, image, description, price } = product;
         return (
           <article key={id}>
@@ -13,6 +15,7 @@ const ListView = ({ allFilteredProducts }) => {
             <div>
               <h4>{name}</h4>
               <h5 className="price">{formatPrice(price)}</h5>
+              {/* shorten the strings of product description */}
               <p>{description.substring(0, 150)}...</p>
               <Link to={`product/${id}`} className="btn">
                 Details

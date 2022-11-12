@@ -12,8 +12,6 @@ import {
   Error,
   AuthWrapper,
 } from "./pages";
-// import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -38,7 +36,6 @@ function App() {
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />
-        {/* <ToastContainer position="top-center" style={{ marginTop: "1rem" }} /> */}
       </Router>
     </AuthWrapper>
   );

@@ -9,8 +9,8 @@ import CartButtons from "./CartButtons";
 import { useUserContext } from "../context/user_context";
 
 const Sidebar = () => {
-  const { isSidebarOpen, closeSidebar } = useProductsContext();
-  const { myUser } = useUserContext();
+  const { isSidebarOpen, closeSidebar } = useProductsContext(); // passing in states and functionality
+  const { myUser } = useUserContext(); // passing in states and functionality
   return (
     <SidebarContainer>
       <aside
@@ -23,6 +23,7 @@ const Sidebar = () => {
           </button>
         </div>
         <ul className="links">
+          {/* iterate over all links array */}
           {links.map((link) => {
             const { id, url, text } = link;
             return (
@@ -33,6 +34,7 @@ const Sidebar = () => {
               </li>
             );
           })}
+          {/* display the checkout page only if the myUser state exist */}
           {myUser ? (
             <li>
               <Link to="/checkout" onClick={closeSidebar}>

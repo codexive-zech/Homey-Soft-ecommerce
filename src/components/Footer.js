@@ -7,7 +7,7 @@ const Footer = () => {
       <h5>
         &copy; {getYear}. <span> Homey Soft. </span>
       </h5>
-      <h5> All Right Reserved.</h5>
+      <h5> All Right Reserved. Made By Zechariah</h5>
     </Wrapper>
   );
 };

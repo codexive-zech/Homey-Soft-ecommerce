@@ -22,19 +22,19 @@ const initialState = {
   singleProductLoading: false,
   singleProductError: false,
   singleProduct: {},
-};
+}; // initialing all the state
 
-const ProductsContext = React.createContext();
+const ProductsContext = React.createContext(); //creating context api
 
 export const ProductsProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState); // init the useReducer hook for use
 
   const openSidebar = () => {
     dispatch({ type: SIDEBAR_OPEN });
-  };
+  }; // opens sidebar
   const closeSidebar = () => {
     dispatch({ type: SIDEBAR_CLOSE });
-  };
+  }; // close sidebar
 
   const fetchProducts = async (url) => {
     dispatch({ type: GET_PRODUCTS_BEGIN });
@@ -46,7 +46,7 @@ export const ProductsProvider = ({ children }) => {
     } catch (error) {
       dispatch({ type: GET_PRODUCTS_ERROR });
     }
-  };
+  }; // getting all products data from the API url
 
   const fetchSingleProduct = async (url) => {
     dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
@@ -57,15 +57,15 @@ export const ProductsProvider = ({ children }) => {
     } catch (error) {
       dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
     }
-  };
+  }; // getting single product data from the API url
 
   useEffect(() => {
     fetchProducts(url);
-  }, []);
+  }, []); // re-render the fetching of all products data on initial window load
 
   return (
     <ProductsContext.Provider
-      value={{ ...state, openSidebar, closeSidebar, fetchSingleProduct }}
+      value={{ ...state, openSidebar, closeSidebar, fetchSingleProduct }} // returning states and function props to be used in components
     >
       {children}
     </ProductsContext.Provider>

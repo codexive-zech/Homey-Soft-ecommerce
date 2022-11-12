@@ -5,7 +5,7 @@ import AmountButtons from "./AmountButtons";
 import { FaTrash } from "react-icons/fa";
 import { useCartContext } from "../context/cart_context";
 const CartItem = ({ id, name, image, color, price, amount }) => {
-  const { removeCartItem, toggleAmount } = useCartContext();
+  const { removeCartItem, toggleAmount } = useCartContext(); // passing in states and functionality
   const increaseAmount = () => {
     toggleAmount(id, "inc");
   };

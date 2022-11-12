@@ -15,36 +15,36 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const SingleProductPage = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // getting the id of the url
   const {
     singleProductLoading,
     singleProductError,
     singleProduct,
     fetchSingleProduct,
-  } = useProductsContext();
+  } = useProductsContext(); // passing in states  and functionality
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`);
     // eslint-disable-next-line
-  }, [id]);
+  }, [id]); // fetch and re-render fetched data any time the id params changes
 
   useEffect(() => {
     if (singleProductError) {
       setTimeout(() => {
         navigate("/");
       }, 3000);
-    }
+    } // if the is an error and the single product API url is invalid redirect to home
     // eslint-disable-next-line
-  }, [singleProductError]);
+  }, [singleProductError]); // re-render whenever the single product error state changes
 
   if (singleProductLoading) {
     return <Loading />;
-  }
+  } // display loading component when the product data is still fetching
 
   if (singleProductError) {
     return <Error />;
-  }
+  } // display error component when the product data is not found (invalid URL)
 
   const {
     company,
@@ -56,7 +56,7 @@ const SingleProductPage = () => {
     reviews,
     stars,
     stock,
-  } = singleProduct;
+  } = singleProduct; // destructuring the single product object that was fetched from the API url
   return (
     <Wrapper>
       <PageHero title={name} singleProduct />
@@ -84,7 +84,6 @@ const SingleProductPage = () => {
               {company}
             </p>
             <hr />
-            {/* Add color later */}
             {stock > 0 ? <AddToCart singleProduct={singleProduct} /> : null}
           </div>
         </div>

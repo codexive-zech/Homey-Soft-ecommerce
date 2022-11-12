@@ -6,20 +6,23 @@ const initialState = {
   email: "",
   phone: "",
   address: "",
-};
+}; // initialing all the state
 
-const CheckoutContext = React.createContext();
+const CheckoutContext = React.createContext(); // creating a context api
 
 export const CheckoutProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState); // init the useReducer hook for use
   const handleCheckoutInput = (e) => {
     let name = e.target.name;
     let value = e.target.value;
     dispatch({ type: "CHECKOUT_INPUT", payload: { name, value } });
-  };
+  }; // handling the checkout input
 
   return (
-    <CheckoutContext.Provider value={{ ...state, handleCheckoutInput }}>
+    <CheckoutContext.Provider
+      value={{ ...state, handleCheckoutInput }}
+      // returning states and function props to be used in components
+    >
       {children}
     </CheckoutContext.Provider>
   );
