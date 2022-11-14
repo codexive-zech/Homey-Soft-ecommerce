@@ -17,7 +17,7 @@ const ListView = ({ allFilteredProducts }) => {
               <h5 className="price">{formatPrice(price)}</h5>
               {/* shorten the strings of product description */}
               <p>{description.substring(0, 150)}...</p>
-              <Link to={`product/${id}`} className="btn">
+              <Link to={`products/product/${id}`} className="btn">
                 Details
               </Link>
             </div>
