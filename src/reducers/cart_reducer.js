@@ -5,6 +5,7 @@ import {
   REMOVE_CART_ITEM,
   TOGGLE_CART_ITEM_AMOUNT,
 } from "../actions";
+import toast from "react-hot-toast";
 
 const cart_reducer = (state, action) => {
   if (action.type === ADD_TO_CART) {
@@ -37,16 +38,19 @@ const cart_reducer = (state, action) => {
         image: singleProduct.images[0].url,
         maxStock: singleProduct.stock,
       }; // create a new cart item
+      toast.success("Item Added to Cart");
       return { ...state, cart: [...state.cart, newCartItem] }; // return all the copy state and update the cart (copy all the prev cart item and add a new one if it does not exist )
     }
   } // functionality for adding product to the cart
   if (action.type === REMOVE_CART_ITEM) {
     const { id } = action.payload; // destructing property from the returned payload
     const deleteItem = state.cart.filter((item) => item.id !== id); // removing a cart item based on it id from the cart state
+    toast.success("Item Removed From Cart");
     return { ...state, cart: deleteItem }; // return all the copy state and the cart state when cart item is removed
   } // functionality for removing product from the cart
   if (action.type === CLEAR_CART) {
     const clearingCart = []; // define an empty array
+    toast.success("Cart Cleared Successfully");
     return { ...state, cart: clearingCart }; // return all the copy state and the cart state when cart item is cleared
   } // functionality for clearing product from the cart
   if (action.type === TOGGLE_CART_ITEM_AMOUNT) {
@@ -61,6 +65,7 @@ const cart_reducer = (state, action) => {
           if (newAmount > cartItem.maxStock) {
             newAmount = cartItem.maxStock; // the amount should be the max stock
           }
+          toast.success("Item Quantity Increased");
           return { ...cartItem, amount: newAmount }; // return all the copy of item in the cart state and update the amount state
         }
         // checking if the button value is for decrease
@@ -70,6 +75,7 @@ const cart_reducer = (state, action) => {
           if (newAmount < 1) {
             newAmount = 1; // the amount should be one (1)
           }
+          toast.success("Item Quantity Decreased");
           return { ...cartItem, amount: newAmount }; // return all the copy of item in the cart state and update the amount state
         }
       }
